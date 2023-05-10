@@ -1,34 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# cecchetti.xyz
 
-## Getting Started
+![Deploy to pages workflow](https://github.com/lightningboltemoji/cecchetti.xyz/actions/workflows/deploy-to-pages.yml/badge.svg)
 
-First, run the development server:
+### Overview
+
+Source for [cecchetti.xyz](https://cecchetti.xyz), my personal landing page. Written as a [Next.js](https://nextjs.org/) app, built on GitHub actions, and hosted on GitHub pages. These make for a great (and free!) way to build and host a tiny static site.
+
+### Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+yarn                # install dependencies
+yarn dev --turbo    # start dev server
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Memoji
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+First, I generated the memoji by recording in Messages and sending it to myself.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+From there, I used the following `ffmpeg` to process the video. This will:
 
-## Learn More
+- Crop it into a square
+- Strip the audio
+- Convert it to lower quality H.264, which is smaller and more compatible than HEVC
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+ffmpeg -i memoji.mov -filter:v "crop=400:400:120:20" -an memoji.mp4
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The crop is specified as `width:height:offset-x:offset-y`. I found that the memoji was slightly off-center (maybe just how I had my head tilted), which is reflected in the offsets above.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+From there, I applied `border-radius: 50%` in CSS to give it a circular mask.

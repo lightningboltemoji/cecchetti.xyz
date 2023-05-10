@@ -1,0 +1,38 @@
+name: deploy-to-pages
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy-to-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "19.x"
+      - name: yarn cache
+        id: yarn-cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}/node_modules
+          key: ${{ runner.os }}-yarn-v2-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-v2-
+      - name: Install dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn
+      - name: Next.js cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-
+      - name: Next.js build
+        run: yarn build
+      - name: Deploy ✨
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: out
