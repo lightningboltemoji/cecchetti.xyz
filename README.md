@@ -1,6 +1,6 @@
 # cecchetti.xyz
 
-![Deploy to pages workflow](https://github.com/lightningboltemoji/cecchetti.xyz/actions/workflows/deploy-to-pages.yml/badge.svg)
+![Deploy Next.js site to Pages](https://github.com/lightningboltemoji/cecchetti.xyz/actions/workflows/nextjs.yml/badge.svg)
 
 ### Overview
 
