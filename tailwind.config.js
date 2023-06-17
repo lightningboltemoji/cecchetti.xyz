@@ -5,5 +5,12 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  theme: {
+    extend: {
+      height: {
+        screen: ['100vh', '100dvh'],
+      }
+    }
+  },
   plugins: [],
 }
