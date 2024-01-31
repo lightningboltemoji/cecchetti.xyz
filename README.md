@@ -9,8 +9,8 @@ Source for [cecchetti.xyz](https://cecchetti.xyz), my personal landing page. Wri
 ### Development
 
 ```bash
-yarn                # install dependencies
-yarn dev --turbo    # start dev server
+pnpm install        # install dependencies
+pnpm dev --turbo    # start dev server
 ```
 
 ### Memoji
