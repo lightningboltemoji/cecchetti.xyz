@@ -10,7 +10,7 @@ import { faSquareEnvelope } from "@fortawesome/free-solid-svg-icons";
       <div class="flex flex-col lg:flex-row items-center">
         <div class="relative">
           <video
-            class="w-[200px] bg-black rounded-full lg:w-[240px] lg:p-[20px] lg:rounded-none lg:rounded-l-full"
+            class="size-[200px] bg-black rounded-full lg:size-[240px] lg:p-[20px] lg:rounded-none lg:rounded-l-full"
             autoPlay
             loop
             muted
