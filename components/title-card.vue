@@ -1,6 +1,12 @@
+<script setup lang="ts">
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faGithubSquare, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faSquareEnvelope } from "@fortawesome/free-solid-svg-icons";
+</script>
+
 <template>
   <div class="inline-block w-screen h-screen overflow-hidden">
-    <div class="flex align-center items-center justify-center w-full h-full">
+    <div class="flex flex-col align-center items-center justify-center w-full h-full">
       <div class="flex flex-col lg:flex-row items-center">
         <div class="relative">
           <video
@@ -20,6 +26,17 @@
           <h2 class="text-l lg:text-2xl mt-2">Software engineer 👨‍💻</h2>
           <h2 class="text-l lg:text-2xl">Seattle, WA 🌲</h2>
         </div>
+      </div>
+      <div class="mt-4">
+        <a target="_" href="https://www.linkedin.com/in/tanner-cecchetti/">
+          <FontAwesomeIcon class="inline size-10 lg:size-16" :icon="faLinkedin" />
+        </a>
+        <a target="_" href="https://github.com/lightningboltemoji">
+          <FontAwesomeIcon class="inline size-10 lg:size-16 ml-1" :icon="faGithubSquare" />
+        </a>
+        <a target="_" href="mailto:tanner@cecchetti.xyz">
+          <FontAwesomeIcon class="inline size-10 lg:size-16 ml-1" :icon="faSquareEnvelope" />
+        </a>
       </div>
     </div>
   </div>
