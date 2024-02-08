@@ -20,10 +20,6 @@ jobs:
       - uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        with:
-          static_site_generator: nuxt
       - name: Restore cache
         uses: actions/cache@v4
         with:
