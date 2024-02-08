@@ -17,7 +17,7 @@ import { faSquareEnvelope } from "@fortawesome/free-solid-svg-icons";
             playsInline
             src="/memoji.mp4?url"
           />
-          <spiral-background class="max-w-0 max-h-0 absolute top-2/4 left-2/4" />
+          <spiral-background class="max-w-0 max-h-0 absolute inset-1/2" />
         </div>
         <div
           class="flex flex-col items-center justify-center text-center text-white bg-black mt-6 lg:mt-0 px-12 py-5 lg:p-0 lg:pr-[80px] lg:h-[240px] rounded-full lg:rounded-l-none"

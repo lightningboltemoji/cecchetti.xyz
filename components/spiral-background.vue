@@ -1,7 +1,11 @@
 <template>
   <div>
     <div class="relative text-black text-xs -z-50">
-      <span class="token" v-for="(t, n) in range" :style="{ '--percent': `${n / range.length}` }">
+      <span
+        class="token absolute inset-1/2"
+        v-for="(t, n) in range"
+        :style="{ '--percent': `${n / range.length}` }"
+      >
         {{ t }}
       </span>
     </div>
@@ -50,10 +54,6 @@ const range = [...Array(400).keys()].map((i) => tokens[i % tokens.length]);
 }
 
 .token {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
   animation: spiral cubic-bezier(0, 0.31, 0.39, 0.64) infinite, fade linear infinite;
   animation-duration: var(--duration);
   animation-delay: calc(var(--percent) * -1 * var(--duration));
