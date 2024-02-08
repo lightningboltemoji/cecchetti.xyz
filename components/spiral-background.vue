@@ -26,16 +26,16 @@ const range = [...Array(400).keys()].map((i) => tokens[i % tokens.length]);
 @keyframes fade {
   0%,
   0% {
-    opacity: 0.1;
+    opacity: 0.2;
   }
 
-  60%,
+  40%,
   90% {
     opacity: 1;
   }
 
   100% {
-    opacity: 0.1;
+    opacity: 0.2;
   }
 }
 

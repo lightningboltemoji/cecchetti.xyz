@@ -2,4 +2,5 @@
 export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss"],
   devtools: { enabled: true },
+  devServer: { host: "0" },
 });
