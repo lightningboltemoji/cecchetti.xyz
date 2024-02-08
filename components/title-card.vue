@@ -1,0 +1,24 @@
+<template>
+  <div class="inline-block w-screen h-screen overflow-hidden">
+    <div class="flex align-center items-center justify-center w-full h-full">
+      <div class="flex flex-col lg:flex-row items-center">
+        <div class="relative">
+          <video
+            class="w-[200px] bg-black rounded-full lg:w-[240px] lg:p-[20px] lg:rounded-none lg:rounded-l-full"
+            autoplay
+            muted
+            src="/memoji.mp4?url"
+          />
+          <spiral-background class="max-w-0 max-h-0 absolute top-2/4 left-2/4" />
+        </div>
+        <div
+          class="flex flex-col items-center justify-center text-center lg:pr-[80px] lg:text-white lg:bg-black lg:h-[240px] lg:rounded-r-full"
+        >
+          <h1 class="font-bold text-5xl">Tanner Cecchetti</h1>
+          <h2 class="text-2xl mt-2">Software engineer 👨‍💻</h2>
+          <h2 class="text-2xl">Seattle, WA 🌲</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

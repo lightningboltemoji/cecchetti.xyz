@@ -1,78 +1,61 @@
 <template>
-    <div class="spiral">
-        <span class="char" v-for="(ch, n) in range" :style="{ '--char-percent': `${n / range.length}` }">
-            {{ ch }}
-        </span>
+  <div>
+    <div class="relative text-black text-xs -z-50">
+      <span class="token" v-for="(t, n) in range" :style="{ '--percent': `${n / range.length}` }">
+        {{ t }}
+      </span>
     </div>
+  </div>
 </template>
 
 <script setup>
-const chars = [
-    "for",
-    "<div>",
-    "{",
-    "import",
-    ";",
-    "class",
-    "}",
-    "if",
-    '"',
-    "switch",
-    "=>",
-    "else",
-    "match"
-];
-const range = [...Array(chars.length * 24).keys()].map(i => chars[i % chars.length]);
+const tokens =
+  'const for <div> { let import ; class } final if " switch => else match private '.split(" ");
+const range = [...Array(400).keys()].map((i) => tokens[i % tokens.length]);
 </script>
 
 <style scoped>
+* {
+  --radius: 50vmax * 1.5;
+  --rotations: -14turn;
+  --duration: 3000s;
+  --scale-start: 0.5;
+  --scale-end: 1.75;
+}
+
 @keyframes fade {
+  0%,
+  0% {
+    opacity: 0.1;
+  }
 
-    0%,
-    5% {
-        opacity: 0;
-    }
+  60%,
+  90% {
+    opacity: 1;
+  }
 
-    50% {
-        opacity: 0.3;
-    }
-
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 0.1;
+  }
 }
 
 @keyframes spiral {
-    0% {
-        transform: scale(0.1) rotate(0turn) translateY(0em);
-    }
+  0% {
+    transform: rotate(0) translateY(0) scale(var(--scale-start));
+  }
 
-    100% {
-        transform: scale(1) rotate(calc(var(--spirals) * -1turn)) translateY(calc(-0.05em * var(--char-total) * (var(--size))));
-    }
+  100% {
+    transform: rotate(var(--rotations)) translateY(calc(var(--radius) * -1)) scale(var(--scale-end));
+  }
 }
 
-.spiral {
-    --spirals: 16;
-    --size: 3.2;
-    --duration: 2000s;
-    --char-total: v-bind('range.length');
+.token {
+  position: absolute;
+  top: 50%;
+  left: 50%;
 
-    position: relative;
-    color: black;
-    font-size: calc(400vmax / var(--char-total));
-    width: 65%;
-    height: 0px;
-}
-
-.char {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    animation: spiral cubic-bezier(0, 0.57, 0.71, 0.88) infinite,
-        fade cubic-bezier(0, 0.57, 0.71, 0.88) infinite both;
-    animation-duration: var(--duration);
-    animation-delay: calc((-1 * var(--duration)) + var(--duration) * (var(--char-percent)));
+  animation: spiral cubic-bezier(0, 0.31, 0.39, 0.64) infinite, fade linear infinite;
+  animation-duration: var(--duration);
+  animation-delay: calc(var(--percent) * -1 * var(--duration));
 }
 </style>
