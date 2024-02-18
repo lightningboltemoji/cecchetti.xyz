@@ -27,6 +27,13 @@ const range = [...Array(400).keys()].map((i) => tokens[i % tokens.length]);
   --scale-end: 1.75;
 }
 
+@media only screen and (min-width: 1020px) {
+  * {
+    --rotations: -19turn;
+    --scale-end: 2.75;
+  }
+}
+
 @keyframes fade {
   0%,
   0% {
